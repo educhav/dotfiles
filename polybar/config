@@ -1,0 +1,363 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+;background = ${xrdb:color0:#222}
+background = #11121d
+background-alt = #15161e
+;foreground = ${xrdb:color7:#222}
+foreground = #a9b1d6
+foreground-alt = #7c88c0
+; primary = #f7768e
+primary = #8867c0
+secondary = #e60053
+alert = #bd2c40
+
+blue = #7199EE
+cyan = #38A89D
+green =  #A0E8A2
+orange = #d19a66
+red =  #e06c75
+yellow = #D4B261
+purple = #A485DD
+light-gray = #565c64
+
+[bar/first]
+monitor = ${env:MONITOR:DisplayPort-0}
+width = 100%
+height = 27
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+; font-0 = fixed:pixee0lsize=10;1
+font-0 = JetBrainsMono:style=ExtraBold:size=12
+font-1 = Font Awesome 5 Free:pixelsize=12;2
+font-2 = Font Awesome 5 Free Solid:pixelsize=12;2
+font-3 = Font Awesome 5 Brands:pixelsize=12;2
+
+modules-left = bspwm xwindow
+modules-center = 
+modules-right = pulseaudio filesystem memory cpu radeon eth pacman date 
+
+tray-position = right
+tray-padding = 2
+
+wm-restack = bspwm
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/second]
+monitor = ${env:MONITOR:HDMI-A-0}
+width = 100%
+height = 27
+radius = 0.0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+; border-top-size = 7
+; border-bottom-size = 7
+border-top-color = ${colors.background}
+border-bottom-color = ${colors.background}
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+; font-0 = fixed:pixelsize=10;1
+font-0 = JetBrainsMono:style=ExtraBold:size=12
+font-1 = Font Awesome 5 Free:pixelsize=12;2
+font-2 = Font Awesome 5 Free Solid:pixelsize=12;2
+font-3 = Font Awesome 5 Brands:pixelsize=12;2
+
+modules-left = bspwm xwindow
+modules-center = 
+modules-right = pulseaudio filesystem memory cpu radeon eth pacman date 
+
+tray-position = right
+tray-padding = 2
+
+wm-restack = bspwm
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted =  %percentage_used%% 
+label-mounted-foreground = #ff3333
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+ws-icon-0 = I;
+ws-icon-1 = II;
+ws-icon-2 = III;
+ws-icon-3 = IV;
+ws-icon-4 = V;
+ws-icon-5 = VI;
+ws-icon-6 = VII;
+ws-icon-7 = VIII;
+ws-icon-8 = IX;
+ws-icon-9 = X;
+ws-icon-default = 
+; ws-icon-0 = I;1
+; ws-icon-1 = II;2
+; ws-icon-2 = III;3
+; ws-icon-3 = IV;4
+; ws-icon-4 = V;5
+; ws-icon-5 = VI;6
+; ws-icon-6 = VII;7
+; ws-icon-7 = VIII;8
+; ws-icon-8 = IX;9
+; ws-icon-9 = X;10
+; ws-icon-10 = XI;11
+; ws-icon-11 = XII;12
+; ws-icon-default = 
+; ws-icon-0 = 1;%{F#ff9b93}
+; ws-icon-1 = 2;%{F#4BB1A7}
+; ws-icon-2 = 3;%{F#4BB1A7}
+; ws-icon-3 = 4;%{F#4BB1A7}
+; ws-icon-4 = 5;%{F#A3BE8C}阮
+; ws-icon-5 = 6;%{F#81A1C1}ﭮ
+; ws-icon-6 = 7;%{F#72C7D1}金
+; ws-icon-7 = 8;%{F#B888E2}
+; ws-icon-8 = 9;%{F#C7C18B}
+; ws-icon-9 = 0;%{F#AE8785}
+
+
+label-focused = %icon%
+; label-focused-background = ${colors.background-alt}
+; label-focused-foreground = ${colors.primary}
+label-focused-underline= #a9b1d6
+label-focused-padding = 2
+
+label-unfocused = %icon%
+label-unfocused-padding = 2
+
+label-occupied = %icon%
+label-occupied-padding = 2
+
+label-urgent = %icon%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = 
+; label-empty-foreground = ${colors.foreground}
+; label-empty-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song> <label-time>
+label-time = [%elapsed% / %total%]
+label-time-foreground = ${colors.primary}
+label-song = %title% - %artist%
+; label-song = %artist% - %title%
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 60
+label-song-ellipsis = true
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = #23a4f8
+; format-underline = #f90000
+label = %percentage:2%%
+label-foreground = #23a4f8
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = #8867c0
+; format-underline = #9f78e1
+label = %percentage_used%%
+label-foreground = #8867c0
+
+[module/eth]
+type = internal/network
+interface = eno2
+interval = 3.0
+
+; format-connected-underline = #9ece6a
+format-connected-prefix = " "
+format-disconnected-prefix = " "
+format-connected-prefix-foreground = #9ece6a
+format-disconnected-prefix-foreground = #9ece6a
+label-connected = 
+label-connected-foreground = #9ece6a
+label-disconnected = 
+label-disconnected-foreground = #9ece6a
+
+format-disconnected = <label-disconnected>
+; format-disconnected = <label-disconnected>
+; format-disconnected-underline = ${self.format-connected-underline}
+; label-disconnected = %ifname% disconnected
+; label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = " %m/%d/%Y"
+date-alt = " %m/%d/%Y"
+
+time = %r
+time-alt = %r
+
+format-prefix =  
+format-prefix-foreground = #6699ff
+
+label = %date% %time%
+; label-foreground = ${colors.foreground-alt}
+label-foreground = #6699ff
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume> <label-volume>
+format-volume-foreground = #55aa55
+label-volume = %percentage%%
+label-volume-foreground-0 = #55aa55
+; label-volume-foreground =
+click-right = pavucontrol
+
+ramp-volume-0 = "%{T3}%{T-}"
+ramp-volume-1 = "%{T3}%{T-}"
+ramp-volume-2 = "%{T3}%{T-}"
+ramp-volume-3 = "%{T3}%{T-}"
+
+label-muted = muted
+label-muted-foreground = ${colors.secondary}
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[module/spotify]
+type = custom/script
+interval = 1
+; format-prefix = 
+format-prefix-foreground = #55aa55
+; label-foreground = #8867c0
+format = <label>
+; format-underline = #8867c0
+exec = python /home/eddie/.config/polybar/spotify.py -f '{song} - {artist}' -t 60
+
+[module/radeon]
+type = custom/script
+exec = ~/.config/polybar/radeon.sh
+interval = 3
+format-prefix =     
+format-prefix-foreground = #ff6600
+label-foreground = #ff6600
+
+
+[module/pacman]
+type = custom/script
+exec = ~/.config/polybar/pacman.sh
+interval = 300
+format-prefix = 
+format-prefix-foreground = #4d4dff
+label-foreground = #4d4dff
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
