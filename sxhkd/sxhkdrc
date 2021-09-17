@@ -7,6 +7,8 @@ super + w
     brave
 super + m 
     spotify
+super + r
+    thunar
 
 # System controls
 super + F1
@@ -30,7 +32,7 @@ super + Escape
 super + b
     bspc node -t fullscreen
 super + t 
-    bspc node -t ~tiled
+    bspc node -t tiled
 super + shift + t
     bspc node -t floating
 
@@ -39,7 +41,7 @@ super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # desktop movement
-super + {_,shift + }{1, 3, x, v, f, 2, 4, c, g, 0}
+super + {_,shift + }{2, 4, c, g, 0, 1, 3, x, v, f}
     bspc {desktop -f,node -d} '^{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}' 
 
 # window resizing

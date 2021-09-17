@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # some useful options (man zshoptions)
+
 setopt autocd extendedglob nomatch menucomplete
 setopt interactive_comments
 stty stop undef		# Disable ctrl-s to freeze terminal.
@@ -33,6 +34,7 @@ zsh_add_file "zsh-exports"
 zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-prompt"
+zsh_add_file ".zprofile"
 
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
@@ -43,8 +45,6 @@ zsh_add_completion "esc/conda-zsh-completion" false
 
 # Key-bindings
 bindkey -s '^o' 'ranger\n'
-bindkey -s '^d' 'tmux attach\n'
-# bindkey -s '^v' 'nvim\n'
 bindkey '^[[P' delete-char
 bindkey "^n" up-line-or-beginning-search # Up
 bindkey "^p" down-line-or-beginning-search # Down

@@ -1,9 +1,10 @@
 #!/bin/sh
 sxhkd &
 pgrep bspswallow || bspswallow &
-~/.config/polybar/launch.sh 
+~/.config/polybar/launch.sh &
 setxkbmap -option caps:swapescape &
-xrandr --output DisplayPort-0 --mode 1920x1080 --rate 144 &
+xrandr --output DisplayPort-0 --mode 1920x1080 --rate 144 --right-of HDMI-A-0 &
+picom -f &
 feh --bg-fill /home/eddie/pictures/background/mcis.jpg
 
 bspc monitor DisplayPort-0 -d I III V VII IX 
